@@ -9,9 +9,18 @@
 </head>
 
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
+  <div id="jsontext"></div>
+
+  <script>
+      fetch("https://api.github.com/repos/wyl765/test/contents/graph.json")
+          .then((response) => response.json())
+          .then((data) => {
+              const elem = document.getElementById("jsontext");
+              const graphString = window.atob(data.content);
+              elem.innerHTML = graphString;
+              console.log(graphString);
+          });
+  </script>
 </body>
 
 </html>
